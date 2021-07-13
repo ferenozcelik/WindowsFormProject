@@ -21,6 +21,9 @@ namespace LoginApp
 
         public static string userName;
         public static string firstName, lastName;
+        public static string country, city;
+        public static string role;
+        public static bool admin;
 
         public void Login(string username, string password, Form form1)
         {
@@ -29,12 +32,17 @@ namespace LoginApp
             reader = sqlCommand.ExecuteReader();
             if (reader.Read()) // if it could read
             {
-                MessageBox.Show("Login successful!", "Succeeded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Login successful!", "Succeeded", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 userName = reader["Username"].ToString();
                 firstName = reader["FirstName"].ToString();
                 lastName = reader["LastName"].ToString();
+                country = reader["Country"].ToString();
+                city = reader["City"].ToString();
+                admin = (bool)reader["Admin"];
+                role = reader["Role"].ToString();
                 
-                Home home = new Home();
+                
+                HomeScreen home = new HomeScreen();
                 form1.Hide();
                 home.ShowDialog();
                 Application.Exit();
@@ -43,7 +51,7 @@ namespace LoginApp
             {
                 MessageBox.Show("Wrong username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //connection.Close();
+            connection.Close();
             sqlCommand.Dispose();
         }
 
@@ -71,6 +79,7 @@ namespace LoginApp
 
         }
 
+
         private void LoginScreen_FormClosed(object sender, FormClosedEventArgs e)
         {
             //exit application when form is closed
@@ -89,5 +98,7 @@ namespace LoginApp
             Login(usernameInput, passwordInput, this);
 
         }
+
+
     }
 }
