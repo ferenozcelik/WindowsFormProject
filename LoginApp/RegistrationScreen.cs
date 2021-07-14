@@ -31,7 +31,18 @@ namespace LoginApp
 
         public void Register()
         {
-            connection.Open();
+            try
+            {
+                connection.Open();
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show("An error occurred while establishing a connection to the server. Contact your system administrator.", 
+                    "Error Code: " + Convert.ToString(e.ErrorCode), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
             if (txtPassword.Text != string.Empty && txtConfirmPassword.Text != string.Empty && txtUsername.Text != string.Empty
                 && txtFirstName.Text != string.Empty && txtLastName.Text != string.Empty
                 && txtCountry.Text != string.Empty && txtCity.Text != string.Empty && checkedListBoxRole.SelectedItems.Count != 0)
@@ -39,7 +50,19 @@ namespace LoginApp
                 if (txtPassword.Text == txtConfirmPassword.Text)
                 {
                     sqlCommand = new SqlCommand("Select * from Users where Username = '" + txtUsername.Text + "'", connection);
-                    reader = sqlCommand.ExecuteReader();
+                    try
+                    {
+                        reader = sqlCommand.ExecuteReader();
+                    }
+                    catch (SqlException e)
+                    {
+                        MessageBox.Show("An error occurred while processing your request.", 
+                            "Error Code: " + Convert.ToString(e.ErrorCode), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        connection.Close();
+                        return;
+                    }
+
+
                     if (reader.Read())
                     {
                         reader.Close();
@@ -76,9 +99,23 @@ namespace LoginApp
                         {
                             sqlCommand.Parameters.AddWithValue("Admin", false);
                         }
-                        sqlCommand.ExecuteNonQuery();
+
+                        try
+                        {
+                            sqlCommand.ExecuteNonQuery();
+                        }
+                        catch (SqlException e)
+                        {
+                            MessageBox.Show("An error occurred while processing your request.", 
+                                "Error code: " + Convert.ToString(e.ErrorCode), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        finally
+                        {
+                            connection.Close();
+                        }
+                       
                         MessageBox.Show("Your account is created. Please login now.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        
                         
                         this.Hide();
                         LoginScreen loginScreen = new LoginScreen();

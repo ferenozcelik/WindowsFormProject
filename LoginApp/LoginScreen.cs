@@ -29,13 +29,43 @@ namespace LoginApp
 
         public void Login(string username, string password, Form form1)
         {
+            using (connection)
+            {
+
+            }
+
+
             sqlCommand = new SqlCommand("Select * from Users Where Username='" + username + "' and Password='" + password + "'", connection);
-            connection.Open();
-            reader = sqlCommand.ExecuteReader();
-            //execute reader kimlerle çalışır?
+            //using (connection) { }
+            try
+            {
+                connection.Open();
+                // hata olursa connection açılıyor mu?
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show("An error occurred while establishing a connection to the server. Contact your system administrator.",
+                    "Error Code: " + Convert.ToString(e.ErrorCode), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                reader = sqlCommand.ExecuteReader();
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show("An error occurred while processing your request. Contact your system administrator.",
+                    "Error Code: " + Convert.ToString(e.ErrorCode), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                connection.Close();
+                return;
+            }
+
             if (reader.Read()) // if it could read
             {
                 //MessageBox.Show("Login successful!", "Succeeded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // store data of the user
                 userName = reader["Username"].ToString();
                 firstName = reader["FirstName"].ToString();
                 lastName = reader["LastName"].ToString();
@@ -43,8 +73,10 @@ namespace LoginApp
                 city = reader["City"].ToString();
                 admin = (bool)reader["Admin"];
                 role = reader["Role"].ToString();
-                
-                
+
+                reader.Close();
+
+                // show home screen
                 HomeScreen home = new HomeScreen();
                 form1.Hide();
                 home.ShowDialog();

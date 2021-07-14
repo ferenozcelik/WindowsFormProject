@@ -63,12 +63,16 @@ namespace LoginApp
         private void buttonUserList_Click(object sender, EventArgs e)
         {
             UserListPopUp userListPopUp = new UserListPopUp();
-            DialogResult dialogResult = userListPopUp.ShowDialog();
-            userListPopUp.Dispose();
+            if (UserListPopUp.state)
+            {
+                DialogResult dialogResult = userListPopUp.ShowDialog();
+                userListPopUp.Dispose();
+            }
         }
 
         private void buttonAssignTask_Click(object sender, EventArgs e)
         {
+
             TaskAssignPopUp taskAssignPopUp = new TaskAssignPopUp();
             DialogResult dialogResult = taskAssignPopUp.ShowDialog();
             taskAssignPopUp.Dispose();
