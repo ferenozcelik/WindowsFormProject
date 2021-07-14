@@ -17,6 +17,7 @@ namespace LoginApp
             if (LoginScreen.admin == false)
             {
                 buttonUserList.Visible = false;
+                buttonAssignTask.Visible = false;
             }
         }
 
@@ -30,13 +31,15 @@ namespace LoginApp
             txtWelcome.Text = LoginScreen.firstName + " " + LoginScreen.lastName;
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
 
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.ShowDialog();
         }
 
-        
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonCreateAcc_Click(object sender, EventArgs e)
         {
             if (LoginScreen.admin == true)
             {
@@ -50,18 +53,11 @@ namespace LoginApp
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonProfileDet_Click(object sender, EventArgs e)
         {
             ProfileDetailsPopUp profileDetailsPopUp = new ProfileDetailsPopUp();
             DialogResult dialogResult = profileDetailsPopUp.ShowDialog();
             profileDetailsPopUp.Dispose();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            LoginScreen loginScreen = new LoginScreen();
-            loginScreen.ShowDialog();
         }
 
         private void buttonUserList_Click(object sender, EventArgs e)
@@ -70,5 +66,14 @@ namespace LoginApp
             DialogResult dialogResult = userListPopUp.ShowDialog();
             userListPopUp.Dispose();
         }
+
+        private void buttonAssignTask_Click(object sender, EventArgs e)
+        {
+            TaskAssignPopUp taskAssignPopUp = new TaskAssignPopUp();
+            DialogResult dialogResult = taskAssignPopUp.ShowDialog();
+            taskAssignPopUp.Dispose();
+        }
+
+        
     }
 }

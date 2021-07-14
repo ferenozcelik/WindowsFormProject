@@ -41,8 +41,8 @@ namespace LoginApp
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.txtCountry = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonRegister = new System.Windows.Forms.Button();
+            this.buttonChangeToLogin = new System.Windows.Forms.Button();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.checkBoxAdmin = new System.Windows.Forms.CheckBox();
@@ -60,7 +60,6 @@ namespace LoginApp
             this.label1.Size = new System.Drawing.Size(151, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "First Name";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -71,7 +70,6 @@ namespace LoginApp
             this.label2.Size = new System.Drawing.Size(147, 38);
             this.label2.TabIndex = 1;
             this.label2.Text = "Last Name";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -102,7 +100,6 @@ namespace LoginApp
             this.label5.Size = new System.Drawing.Size(115, 38);
             this.label5.TabIndex = 4;
             this.label5.Text = "Country";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -163,29 +160,29 @@ namespace LoginApp
             this.txtCountry.Size = new System.Drawing.Size(164, 38);
             this.txtCountry.TabIndex = 10;
             // 
-            // button1
+            // buttonRegister
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(272, 546);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(164, 50);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Register";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonRegister.Cursor = System.Windows.Forms.Cursors.Default;
+            this.buttonRegister.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonRegister.Location = new System.Drawing.Point(272, 546);
+            this.buttonRegister.Name = "buttonRegister";
+            this.buttonRegister.Size = new System.Drawing.Size(164, 50);
+            this.buttonRegister.TabIndex = 12;
+            this.buttonRegister.Text = "Register";
+            this.buttonRegister.UseVisualStyleBackColor = true;
+            this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
             // 
-            // button2
+            // buttonChangeToLogin
             // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(192, 626);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(340, 51);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Have an account? Login";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonChangeToLogin.Cursor = System.Windows.Forms.Cursors.Default;
+            this.buttonChangeToLogin.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonChangeToLogin.Location = new System.Drawing.Point(192, 626);
+            this.buttonChangeToLogin.Name = "buttonChangeToLogin";
+            this.buttonChangeToLogin.Size = new System.Drawing.Size(340, 51);
+            this.buttonChangeToLogin.TabIndex = 13;
+            this.buttonChangeToLogin.Text = "Have an account? Login";
+            this.buttonChangeToLogin.UseVisualStyleBackColor = true;
+            this.buttonChangeToLogin.Click += new System.EventHandler(this.buttonChangeToLogin_Click);
             // 
             // txtConfirmPassword
             // 
@@ -216,7 +213,6 @@ namespace LoginApp
             this.checkBoxAdmin.TabIndex = 16;
             this.checkBoxAdmin.Text = "Admin";
             this.checkBoxAdmin.UseVisualStyleBackColor = false;
-            this.checkBoxAdmin.CheckedChanged += new System.EventHandler(this.checkBoxAdmin_CheckedChanged);
             // 
             // label8
             // 
@@ -241,6 +237,7 @@ namespace LoginApp
             // 
             // checkedListBoxRole
             // 
+            this.checkedListBoxRole.CheckOnClick = true;
             this.checkedListBoxRole.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkedListBoxRole.FormattingEnabled = true;
             this.checkedListBoxRole.Items.AddRange(new object[] {
@@ -284,8 +281,8 @@ namespace LoginApp
             this.Controls.Add(this.checkBoxAdmin);
             this.Controls.Add(this.txtConfirmPassword);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonChangeToLogin);
+            this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.txtCity);
             this.Controls.Add(this.txtCountry);
             this.Controls.Add(this.txtPassword);
@@ -300,6 +297,7 @@ namespace LoginApp
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "RegistrationScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.RegistrationScreen_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -320,8 +318,8 @@ namespace LoginApp
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.TextBox txtCountry;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonRegister;
+        private System.Windows.Forms.Button buttonChangeToLogin;
         private System.Windows.Forms.TextBox txtConfirmPassword;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox checkBoxAdmin;

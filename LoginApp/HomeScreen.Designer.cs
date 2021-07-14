@@ -35,6 +35,7 @@ namespace LoginApp
             this.buttonProfileDetails = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonUserList = new System.Windows.Forms.Button();
+            this.buttonAssignTask = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -59,7 +60,6 @@ namespace LoginApp
             this.txtWelcome.Size = new System.Drawing.Size(65, 35);
             this.txtWelcome.TabIndex = 1;
             this.txtWelcome.Text = "User";
-            this.txtWelcome.Click += new System.EventHandler(this.label2_Click);
             // 
             // buttonCreateAcc
             // 
@@ -71,7 +71,7 @@ namespace LoginApp
             this.buttonCreateAcc.TabIndex = 2;
             this.buttonCreateAcc.Text = "Create Account";
             this.buttonCreateAcc.UseVisualStyleBackColor = true;
-            this.buttonCreateAcc.Click += new System.EventHandler(this.button1_Click);
+            this.buttonCreateAcc.Click += new System.EventHandler(this.buttonCreateAcc_Click);
             // 
             // buttonProfileDetails
             // 
@@ -83,7 +83,7 @@ namespace LoginApp
             this.buttonProfileDetails.TabIndex = 3;
             this.buttonProfileDetails.Text = "Profile Details";
             this.buttonProfileDetails.UseVisualStyleBackColor = true;
-            this.buttonProfileDetails.Click += new System.EventHandler(this.button2_Click);
+            this.buttonProfileDetails.Click += new System.EventHandler(this.buttonProfileDet_Click);
             // 
             // buttonLogout
             // 
@@ -94,7 +94,7 @@ namespace LoginApp
             this.buttonLogout.TabIndex = 4;
             this.buttonLogout.Text = "Log out";
             this.buttonLogout.UseVisualStyleBackColor = true;
-            this.buttonLogout.Click += new System.EventHandler(this.button3_Click);
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // buttonUserList
             // 
@@ -108,11 +108,24 @@ namespace LoginApp
             this.buttonUserList.UseVisualStyleBackColor = true;
             this.buttonUserList.Click += new System.EventHandler(this.buttonUserList_Click);
             // 
+            // buttonAssignTask
+            // 
+            this.buttonAssignTask.Cursor = System.Windows.Forms.Cursors.Default;
+            this.buttonAssignTask.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonAssignTask.Location = new System.Drawing.Point(12, 266);
+            this.buttonAssignTask.Name = "buttonAssignTask";
+            this.buttonAssignTask.Size = new System.Drawing.Size(170, 47);
+            this.buttonAssignTask.TabIndex = 6;
+            this.buttonAssignTask.Text = "Assign Tasks";
+            this.buttonAssignTask.UseVisualStyleBackColor = true;
+            this.buttonAssignTask.Click += new System.EventHandler(this.buttonAssignTask_Click);
+            // 
             // HomeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1177, 617);
+            this.Controls.Add(this.buttonAssignTask);
             this.Controls.Add(this.buttonUserList);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.buttonProfileDetails);
@@ -135,5 +148,6 @@ namespace LoginApp
         private System.Windows.Forms.Button buttonProfileDetails;
         private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.Button buttonUserList;
+        private System.Windows.Forms.Button buttonAssignTask;
     }
 }

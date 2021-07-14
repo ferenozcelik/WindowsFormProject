@@ -15,6 +15,8 @@ namespace LoginApp
     
     public partial class LoginScreen : Form
     {
+        // database bağlantı sağlanamazsa message box
+        
         SqlConnection connection = new SqlConnection(@"Data Source = .\SQLEXPRESS; Initial Catalog = TestDB; Integrated Security = True");
         SqlCommand sqlCommand;
         SqlDataReader reader;
@@ -30,6 +32,7 @@ namespace LoginApp
             sqlCommand = new SqlCommand("Select * from Users Where Username='" + username + "' and Password='" + password + "'", connection);
             connection.Open();
             reader = sqlCommand.ExecuteReader();
+            //execute reader kimlerle çalışır?
             if (reader.Read()) // if it could read
             {
                 //MessageBox.Show("Login successful!", "Succeeded", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -11,6 +11,8 @@ namespace LoginApp
 {
     public partial class RegistrationScreen : Form
     {
+        // connection yoksa
+
         SqlConnection connection = new SqlConnection(@"Data Source = .\SQLEXPRESS; Initial Catalog = TestDB; Integrated Security = True");
         SqlCommand sqlCommand;
         SqlDataReader reader;
@@ -24,7 +26,7 @@ namespace LoginApp
 
         private void RegistrationScreen_Load(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=TestDB;Integrated Security=True; MultipleActiveResultSets=true");
+            //SqlConnection connection = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=TestDB;Integrated Security=True; MultipleActiveResultSets=true");
         }
 
         public void Register()
@@ -58,17 +60,6 @@ namespace LoginApp
 
                         // checkedListBox Role control
                         string selectedRole;
-                        string[] selectedRoles;
-                        /*
-                        if (checkedListBoxRole.SelectedItems.Count > 1)
-                        {
-                            selectedRoles = new string[checkedListBoxRole.SelectedItems.Count];
-                            foreach (var role in selectedRoles)
-                            {
-                                
-                            }
-                        }
-                        */
                         if (checkedListBoxRole.SelectedItems.Count == 1)
                         {
                             selectedRole = checkedListBoxRole.SelectedItem.ToString();
@@ -106,26 +97,7 @@ namespace LoginApp
             connection.Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBoxAdmin_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void button3_Click(object sender, EventArgs e)
         {
             //checkedListBoxRole.ClearSelected();
@@ -133,6 +105,24 @@ namespace LoginApp
             {
                 checkedListBoxRole.SetItemCheckState(index, CheckState.Unchecked);
             }
+        }
+
+        private void buttonRegister_Click(object sender, EventArgs e)
+        {
+            var confirmResult = Confirmation.Confirm();
+            if (confirmResult == DialogResult.Yes)
+            {
+                Register();
+            }
+            else { }
+            
+        }
+
+        private void buttonChangeToLogin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.ShowDialog();
         }
 
         private void checkedListBoxRole_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -147,22 +137,5 @@ namespace LoginApp
         }
 
 
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            LoginScreen loginScreen = new LoginScreen();
-            loginScreen.ShowDialog();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Register();
-        }
     }
 }

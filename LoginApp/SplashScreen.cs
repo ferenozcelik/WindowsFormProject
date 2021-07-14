@@ -8,10 +8,10 @@ using System.Windows.Forms;
 
 namespace LoginApp
 {
-    public partial class Splash : Form
+    public partial class SplashScreen : Form
     {
         
-        public Splash()
+        public SplashScreen()
         {
             InitializeComponent();
         }
@@ -24,14 +24,14 @@ namespace LoginApp
             tmr.Interval = 3000;
             //starts the timer
             tmr.Start();
-            tmr.Tick += tmr_Tick;
+            tmr.Tick += tmr_Tick; // ???
         }
 
         void tmr_Tick(object sender, EventArgs e)
         {
             //after 3 sec stop the timer
             tmr.Stop();
-            //display mainform
+            //display target form
             LoginScreen loginScreen = new LoginScreen();
             loginScreen.Show();
             //hide this form

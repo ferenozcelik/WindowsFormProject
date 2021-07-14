@@ -18,7 +18,7 @@ namespace LoginApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new LoginScreen());
-            Application.Run(new Splash());
+            Application.Run(new SplashScreen());
         }
     }
 }
