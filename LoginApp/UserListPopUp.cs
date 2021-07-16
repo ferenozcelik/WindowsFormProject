@@ -22,8 +22,6 @@ namespace LoginApp
         }
         public void DisplayUsers()
         {
-            // TRY NEREYE
-
             try
             {
                 using (connection)
@@ -31,9 +29,9 @@ namespace LoginApp
                     // COMMAND'I DATAADAPTER'A VEREMİYORUM
                     //sqlCommand = new SqlCommand("Select UserID as ID, FirstName as [First Name], LastName as [Last Name], Country, City, Role", connection);
 
-                    connection.Open(); // bağlanamazsa açmıyor. kapalı kalıyor!!!!!!
+                    connection.Open(); // bağlanamazsa açmıyor. kapalı kalıyor
                     state = true;
-                    SqlDataAdapter sqlDa = new SqlDataAdapter("Select UserIDpd as ID, FirstName as [First Name], LastName as [Last Name], Country, City, Role from Users", connection);
+                    SqlDataAdapter sqlDa = new SqlDataAdapter("Select UserID as ID, FirstName as [First Name], LastName as [Last Name], Country, City, Role from Users", connection);
                     DataTable dataTable = new DataTable();
                     sqlDa.Fill(dataTable);
 

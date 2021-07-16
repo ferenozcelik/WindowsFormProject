@@ -43,7 +43,6 @@ namespace LoginApp
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(197, 41);
             this.txtUser.TabIndex = 0;
-            this.txtUser.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txtPass
             // 
@@ -53,7 +52,6 @@ namespace LoginApp
             this.txtPass.Size = new System.Drawing.Size(197, 41);
             this.txtPass.TabIndex = 1;
             this.txtPass.UseSystemPasswordChar = true;
-            this.txtPass.TextChanged += new System.EventHandler(this.txtPass_TextChanged);
             // 
             // label1
             // 
@@ -85,7 +83,7 @@ namespace LoginApp
             this.button1.TabIndex = 4;
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // LoginScreen
             // 
@@ -101,7 +99,6 @@ namespace LoginApp
             this.KeyPreview = true;
             this.Name = "LoginScreen";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginScreen_FormClosed);
-            this.Shown += new System.EventHandler(this.LoginScreen_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

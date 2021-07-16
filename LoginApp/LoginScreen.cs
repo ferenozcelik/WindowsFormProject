@@ -16,8 +16,9 @@ namespace LoginApp
     public partial class LoginScreen : Form
     {
         // database bağlantı sağlanamazsa message box
-        
-        SqlConnection connection = new SqlConnection(@"Data Source = .\SQLEXPRESS; Initial Catalog = TestDB; Integrated Security = True");
+
+        static string conStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = TestDB; Integrated Security = True";
+        //SqlConnection connection = new SqlConnection(conStr);
         SqlCommand sqlCommand;
         SqlDataReader reader;
 
@@ -29,65 +30,57 @@ namespace LoginApp
 
         public void Login(string username, string password, Form form1)
         {
-            using (connection)
-            {
-
-            }
-
-
-            sqlCommand = new SqlCommand("Select * from Users Where Username='" + username + "' and Password='" + password + "'", connection);
-            //using (connection) { }
             try
             {
-                connection.Open();
-                // hata olursa connection açılıyor mu?
+                using (SqlConnection connection = new SqlConnection(conStr))
+                {
+                    sqlCommand = new SqlCommand("Select * from Users Where Username = '" + username + "' and Password = '" + password + "'", connection);
+                    connection.Open();
+                    try
+                    {
+                        reader = sqlCommand.ExecuteReader();
+
+                        if (reader.Read()) // if it could read
+                        {
+                            // store data of the user
+                            userName = reader["Username"].ToString();
+                            firstName = reader["FirstName"].ToString();
+                            lastName = reader["LastName"].ToString();
+                            country = reader["Country"].ToString();
+                            city = reader["City"].ToString();
+                            admin = (bool)reader["Admin"];
+                            role = reader["Role"].ToString();
+
+                            reader.Close();
+
+                            // show home screen
+                            HomeScreen home = new HomeScreen();
+                            form1.Hide();
+                            home.ShowDialog();
+                            Application.Exit();
+                        }
+                        
+                        else
+                        {
+                            MessageBox.Show("Wrong username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        sqlCommand.Dispose();
+                    }
+                    catch (SqlException e)
+                    {
+                        MessageBox.Show("An error occurred while processing your request. Contact your system administrator.",
+                            "Error Code: " + Convert.ToString(e.ErrorCode), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        sqlCommand.Dispose();
+                    }
+                }
             }
             catch (SqlException e)
             {
                 MessageBox.Show("An error occurred while establishing a connection to the server. Contact your system administrator.",
                     "Error Code: " + Convert.ToString(e.ErrorCode), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                //return;
             }
 
-            try
-            {
-                reader = sqlCommand.ExecuteReader();
-            }
-            catch (SqlException e)
-            {
-                MessageBox.Show("An error occurred while processing your request. Contact your system administrator.",
-                    "Error Code: " + Convert.ToString(e.ErrorCode), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                connection.Close();
-                return;
-            }
-
-            if (reader.Read()) // if it could read
-            {
-                //MessageBox.Show("Login successful!", "Succeeded", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // store data of the user
-                userName = reader["Username"].ToString();
-                firstName = reader["FirstName"].ToString();
-                lastName = reader["LastName"].ToString();
-                country = reader["Country"].ToString();
-                city = reader["City"].ToString();
-                admin = (bool)reader["Admin"];
-                role = reader["Role"].ToString();
-
-                reader.Close();
-
-                // show home screen
-                HomeScreen home = new HomeScreen();
-                form1.Hide();
-                home.ShowDialog();
-                Application.Exit();
-            }
-            else
-            {
-                MessageBox.Show("Wrong username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            connection.Close();
-            sqlCommand.Dispose();
         }
 
         
@@ -102,38 +95,17 @@ namespace LoginApp
 
         }
 
-        
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPass_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void LoginScreen_FormClosed(object sender, FormClosedEventArgs e)
         {
             //exit application when form is closed
             Application.Exit();
         }
 
-        private void LoginScreen_Shown(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonLogin_Click(object sender, EventArgs e)
         {
             string usernameInput = txtUser.Text;
             string passwordInput = txtPass.Text;
             Login(usernameInput, passwordInput, this);
-
         }
-
-
     }
 }
