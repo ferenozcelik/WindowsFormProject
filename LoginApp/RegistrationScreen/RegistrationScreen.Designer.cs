@@ -47,7 +47,7 @@ namespace LoginApp
             this.label7 = new System.Windows.Forms.Label();
             this.checkBoxAdmin = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonClear = new System.Windows.Forms.Button();
             this.checkedListBoxRole = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
@@ -224,16 +224,16 @@ namespace LoginApp
             this.label8.TabIndex = 17;
             this.label8.Text = "Role";
             // 
-            // button3
+            // buttonClear
             // 
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(723, 529);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(120, 39);
-            this.button3.TabIndex = 20;
-            this.button3.Text = "Clear selection";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.buttonClear.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonClear.Location = new System.Drawing.Point(723, 529);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(120, 42);
+            this.buttonClear.TabIndex = 20;
+            this.buttonClear.Text = "Clear";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // checkedListBoxRole
             // 
@@ -276,7 +276,7 @@ namespace LoginApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1025, 744);
             this.Controls.Add(this.checkedListBoxRole);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.checkBoxAdmin);
             this.Controls.Add(this.txtConfirmPassword);
@@ -324,7 +324,7 @@ namespace LoginApp
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox checkBoxAdmin;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.CheckedListBox checkedListBoxRole;
     }
 }

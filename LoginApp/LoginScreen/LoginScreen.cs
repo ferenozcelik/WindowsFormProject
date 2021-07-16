@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoginApp.Constants;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,9 +16,6 @@ namespace LoginApp
     
     public partial class LoginScreen : Form
     {
-        // database bağlantı sağlanamazsa message box
-
-        static string conStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = TestDB; Integrated Security = True";
         //SqlConnection connection = new SqlConnection(conStr);
         SqlCommand sqlCommand;
         SqlDataReader reader;
@@ -32,7 +30,7 @@ namespace LoginApp
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(conStr))
+                using (SqlConnection connection = new SqlConnection(ConnectionStrings.conStr))
                 {
                     sqlCommand = new SqlCommand("Select * from Users Where Username = '" + username + "' and Password = '" + password + "'", connection);
                     connection.Open();

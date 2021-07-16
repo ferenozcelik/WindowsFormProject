@@ -44,6 +44,7 @@ namespace LoginApp
             this.dgvUserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUserList.Location = new System.Drawing.Point(0, 0);
             this.dgvUserList.Name = "dgvUserList";
+            this.dgvUserList.ReadOnly = true;
             this.dgvUserList.RowHeadersWidth = 51;
             this.dgvUserList.RowTemplate.Height = 29;
             this.dgvUserList.Size = new System.Drawing.Size(1454, 541);

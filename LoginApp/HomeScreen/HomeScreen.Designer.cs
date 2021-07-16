@@ -36,6 +36,7 @@ namespace LoginApp
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonUserList = new System.Windows.Forms.Button();
             this.buttonAssignTask = new System.Windows.Forms.Button();
+            this.buttonViewTasks = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -77,7 +78,7 @@ namespace LoginApp
             // 
             this.buttonProfileDetails.Cursor = System.Windows.Forms.Cursors.Default;
             this.buttonProfileDetails.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonProfileDetails.Location = new System.Drawing.Point(12, 90);
+            this.buttonProfileDetails.Location = new System.Drawing.Point(12, 78);
             this.buttonProfileDetails.Name = "buttonProfileDetails";
             this.buttonProfileDetails.Size = new System.Drawing.Size(170, 47);
             this.buttonProfileDetails.TabIndex = 3;
@@ -100,7 +101,7 @@ namespace LoginApp
             // 
             this.buttonUserList.Cursor = System.Windows.Forms.Cursors.Default;
             this.buttonUserList.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonUserList.Location = new System.Drawing.Point(12, 154);
+            this.buttonUserList.Location = new System.Drawing.Point(12, 131);
             this.buttonUserList.Name = "buttonUserList";
             this.buttonUserList.Size = new System.Drawing.Size(170, 47);
             this.buttonUserList.TabIndex = 5;
@@ -112,19 +113,32 @@ namespace LoginApp
             // 
             this.buttonAssignTask.Cursor = System.Windows.Forms.Cursors.Default;
             this.buttonAssignTask.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonAssignTask.Location = new System.Drawing.Point(12, 266);
+            this.buttonAssignTask.Location = new System.Drawing.Point(12, 335);
             this.buttonAssignTask.Name = "buttonAssignTask";
             this.buttonAssignTask.Size = new System.Drawing.Size(170, 47);
             this.buttonAssignTask.TabIndex = 6;
             this.buttonAssignTask.Text = "Assign Tasks";
             this.buttonAssignTask.UseVisualStyleBackColor = true;
-            this.buttonAssignTask.Click += new System.EventHandler(this.buttonAssignTask_Click);
+            this.buttonAssignTask.Click += new System.EventHandler(this.buttonAssignTasks_Click);
+            // 
+            // buttonViewTasks
+            // 
+            this.buttonViewTasks.Cursor = System.Windows.Forms.Cursors.Default;
+            this.buttonViewTasks.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonViewTasks.Location = new System.Drawing.Point(12, 282);
+            this.buttonViewTasks.Name = "buttonViewTasks";
+            this.buttonViewTasks.Size = new System.Drawing.Size(170, 47);
+            this.buttonViewTasks.TabIndex = 7;
+            this.buttonViewTasks.Text = "View Tasks";
+            this.buttonViewTasks.UseVisualStyleBackColor = true;
+            this.buttonViewTasks.Click += new System.EventHandler(this.buttonViewTasks_Click);
             // 
             // HomeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1177, 617);
+            this.Controls.Add(this.buttonViewTasks);
             this.Controls.Add(this.buttonAssignTask);
             this.Controls.Add(this.buttonUserList);
             this.Controls.Add(this.buttonLogout);
@@ -149,5 +163,6 @@ namespace LoginApp
         private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.Button buttonUserList;
         private System.Windows.Forms.Button buttonAssignTask;
+        private System.Windows.Forms.Button buttonViewTasks;
     }
 }

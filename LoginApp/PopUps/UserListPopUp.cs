@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoginApp.Constants;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,10 +12,11 @@ namespace LoginApp
 {
     public partial class UserListPopUp : Form
     {
-        SqlConnection connection = new SqlConnection(@"Data Source = .\SQLEXPRESS; Initial Catalog = TestDB; Integrated Security = True");
+        //SqlConnection connection = new SqlConnection(@"Data Source = .\SQLEXPRESS; Initial Catalog = TestDB; Integrated Security = True");
         //SqlCommand sqlCommand;
+        string conStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = TestDB; Integrated Security = True";
 
-        public static bool state = true;
+        public bool userListState = true;
         public UserListPopUp()
         {
             InitializeComponent();
@@ -24,26 +26,35 @@ namespace LoginApp
         {
             try
             {
-                using (connection)
+                using (SqlConnection connection = new SqlConnection(ConnectionStrings.conStr))
                 {
                     // COMMAND'I DATAADAPTER'A VEREMİYORUM
                     //sqlCommand = new SqlCommand("Select UserID as ID, FirstName as [First Name], LastName as [Last Name], Country, City, Role", connection);
 
                     connection.Open(); // bağlanamazsa açmıyor. kapalı kalıyor
-                    state = true;
+                    userListState = true;
                     SqlDataAdapter sqlDa = new SqlDataAdapter("Select UserID as ID, FirstName as [First Name], LastName as [Last Name], Country, City, Role from Users", connection);
                     DataTable dataTable = new DataTable();
-                    sqlDa.Fill(dataTable);
 
-                    dgvUserList.DataSource = dataTable;
-                    //dgvUserList.AutoGenerateColumns = false;  // error
+                    try
+                    {
+                        sqlDa.Fill(dataTable);
+                        dgvUserList.DataSource = dataTable;
+                        //dgvUserList.AutoGenerateColumns = false;  // error
+                    }
+                    catch (SqlException e)
+                    {
+                        MessageBox.Show("An error occurred while establishing a connection to the server. Contact your system administrator.",
+                            "Error code: " + e.ErrorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        userListState = false;
+                    }
                 }
             }
             catch (SqlException e)
             {
                 MessageBox.Show("An error occurred while establishing a connection to the server. Contact your system administrator.", 
                     "Error code: " + e.ErrorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                state = false;
+                userListState = false;
                 // EKRANIN GELMESİNİ ENGELLE
             }
         }

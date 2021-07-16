@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoginApp.Tasks;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +17,10 @@ namespace LoginApp
             InitializeComponent();
             if (LoginScreen.admin == false)
             {
+                buttonUserList.Enabled = false;
                 buttonUserList.Visible = false;
+
+                buttonAssignTask.Enabled = false;
                 buttonAssignTask.Visible = false;
             }
         }
@@ -63,21 +67,30 @@ namespace LoginApp
         private void buttonUserList_Click(object sender, EventArgs e)
         {
             UserListPopUp userListPopUp = new UserListPopUp();
-            if (UserListPopUp.state)
+            if (userListPopUp.userListState)
             {
                 DialogResult dialogResult = userListPopUp.ShowDialog();
                 userListPopUp.Dispose();
             }
         }
 
-        private void buttonAssignTask_Click(object sender, EventArgs e)
+        private void buttonAssignTasks_Click(object sender, EventArgs e)
         {
-
             TaskAssignPopUp taskAssignPopUp = new TaskAssignPopUp();
             DialogResult dialogResult = taskAssignPopUp.ShowDialog();
             taskAssignPopUp.Dispose();
         }
 
-        
+        private void buttonViewTasks_Click(object sender, EventArgs e)
+        {
+            TaskViewPopUp taskViewPopUp = new TaskViewPopUp();
+            if (taskViewPopUp.taskListState)
+            {
+                DialogResult dialogResult = taskViewPopUp.ShowDialog();
+                taskViewPopUp.Dispose();
+            }
+        }
+
+
     }
 }

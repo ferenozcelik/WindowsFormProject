@@ -89,10 +89,11 @@ namespace LoginApp
             // 
             // buttonAssign
             // 
-            this.buttonAssign.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonAssign.Location = new System.Drawing.Point(77, 186);
+            this.buttonAssign.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonAssign.ForeColor = System.Drawing.Color.DarkGreen;
+            this.buttonAssign.Location = new System.Drawing.Point(1203, 187);
             this.buttonAssign.Name = "buttonAssign";
-            this.buttonAssign.Size = new System.Drawing.Size(129, 45);
+            this.buttonAssign.Size = new System.Drawing.Size(212, 56);
             this.buttonAssign.TabIndex = 6;
             this.buttonAssign.Text = "Assign\r\n";
             this.buttonAssign.UseVisualStyleBackColor = true;
