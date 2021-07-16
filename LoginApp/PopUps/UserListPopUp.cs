@@ -13,8 +13,7 @@ namespace LoginApp
     public partial class UserListPopUp : Form
     {
         //SqlConnection connection = new SqlConnection(@"Data Source = .\SQLEXPRESS; Initial Catalog = TestDB; Integrated Security = True");
-        //SqlCommand sqlCommand;
-        string conStr = @"Data Source = .\SQLEXPRESS; Initial Catalog = TestDB; Integrated Security = True";
+        SqlCommand sqlCommand = new SqlCommand();
 
         public bool userListState = true;
         public UserListPopUp()
@@ -29,11 +28,11 @@ namespace LoginApp
                 using (SqlConnection connection = new SqlConnection(ConnectionStrings.conStr))
                 {
                     // COMMAND'I DATAADAPTER'A VEREMİYORUM
-                    //sqlCommand = new SqlCommand("Select UserID as ID, FirstName as [First Name], LastName as [Last Name], Country, City, Role", connection);
+                    sqlCommand = new SqlCommand("Select UserID as ID, FirstName as [First Name], LastName as [Last Name], Country, City, Role from Users", connection);
 
                     connection.Open(); // bağlanamazsa açmıyor. kapalı kalıyor
                     userListState = true;
-                    SqlDataAdapter sqlDa = new SqlDataAdapter("Select UserID as ID, FirstName as [First Name], LastName as [Last Name], Country, City, Role from Users", connection);
+                    SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCommand);
                     DataTable dataTable = new DataTable();
 
                     try
