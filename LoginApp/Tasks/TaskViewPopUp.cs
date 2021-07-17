@@ -106,7 +106,6 @@ namespace LoginApp.Tasks
             {
                 MessageBox.Show("An error occurred while establishing a connection to the server. Contact your system administrator.",
                     "Error code: " + ex.ErrorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                taskListState = false;
             }
         }
 
