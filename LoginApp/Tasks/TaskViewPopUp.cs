@@ -28,6 +28,7 @@ namespace LoginApp.Tasks
             DisplayTasks();
         }
 
+
         SqlDataAdapter sqlDa = new SqlDataAdapter();
         DataTable dataTable = new DataTable();
         public void DisplayTasks()
@@ -70,6 +71,7 @@ namespace LoginApp.Tasks
             }
         }
 
+
         public void DeleteTask()
         {
             try
@@ -80,7 +82,7 @@ namespace LoginApp.Tasks
                     foreach (DataGridViewRow row in dgvTaskList.SelectedRows)
                     {
 
-                        sqlCommand = new SqlCommand("Delete from Tasks where Id = " + row.Cells["ID"].Value, connection); // yanlış
+                        sqlCommand = new SqlCommand("Delete from Tasks where Id = " + row.Cells["ID"].Value, connection);
 
                         if (!row.IsNewRow)
                         {
