@@ -142,12 +142,19 @@ namespace LoginApp
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
-            var confirmResult = Confirmation.Confirm();
-            if (confirmResult == DialogResult.Yes)
+            if (Confirmation.Confirm() == DialogResult.Yes)
             {
                 Register();
             }
             else { }
+
+
+            //var confirmResult = Confirmation.Confirm();
+            //if (confirmResult == DialogResult.Yes)
+            //{
+            //    Register();
+            //}
+            //else { }
         }
 
         private void buttonChangeToLogin_Click(object sender, EventArgs e)

@@ -42,27 +42,28 @@ namespace LoginApp
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 35);
+            this.label1.Location = new System.Drawing.Point(10, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 31);
+            this.label1.Size = new System.Drawing.Size(54, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Task:";
             // 
             // txtTask
             // 
             this.txtTask.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTask.Location = new System.Drawing.Point(77, 35);
+            this.txtTask.Location = new System.Drawing.Point(67, 26);
+            this.txtTask.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTask.Name = "txtTask";
-            this.txtTask.Size = new System.Drawing.Size(484, 34);
+            this.txtTask.Size = new System.Drawing.Size(424, 29);
             this.txtTask.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(583, 36);
+            this.label2.Location = new System.Drawing.Point(510, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 31);
+            this.label2.Size = new System.Drawing.Size(62, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Roles:";
             // 
@@ -71,9 +72,10 @@ namespace LoginApp
             this.checkedListBoxRoles.CheckOnClick = true;
             this.checkedListBoxRoles.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkedListBoxRoles.FormattingEnabled = true;
-            this.checkedListBoxRoles.Location = new System.Drawing.Point(664, 36);
+            this.checkedListBoxRoles.Location = new System.Drawing.Point(581, 27);
+            this.checkedListBoxRoles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkedListBoxRoles.Name = "checkedListBoxRoles";
-            this.checkedListBoxRoles.Size = new System.Drawing.Size(291, 207);
+            this.checkedListBoxRoles.Size = new System.Drawing.Size(255, 148);
             this.checkedListBoxRoles.TabIndex = 3;
             this.checkedListBoxRoles.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
@@ -81,9 +83,9 @@ namespace LoginApp
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(997, 38);
+            this.label3.Location = new System.Drawing.Point(872, 28);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(117, 31);
+            this.label3.Size = new System.Drawing.Size(98, 25);
             this.label3.TabIndex = 4;
             this.label3.Text = "Due Date:";
             // 
@@ -91,9 +93,10 @@ namespace LoginApp
             // 
             this.buttonAssign.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonAssign.ForeColor = System.Drawing.Color.DarkGreen;
-            this.buttonAssign.Location = new System.Drawing.Point(1203, 187);
+            this.buttonAssign.Location = new System.Drawing.Point(1053, 140);
+            this.buttonAssign.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAssign.Name = "buttonAssign";
-            this.buttonAssign.Size = new System.Drawing.Size(212, 56);
+            this.buttonAssign.Size = new System.Drawing.Size(186, 47);
             this.buttonAssign.TabIndex = 6;
             this.buttonAssign.Text = "Assign\r\n";
             this.buttonAssign.UseVisualStyleBackColor = true;
@@ -104,16 +107,17 @@ namespace LoginApp
             this.dateTimePickerDueDate.CustomFormat = "yyyy-MM-dd";
             this.dateTimePickerDueDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePickerDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerDueDate.Location = new System.Drawing.Point(1120, 36);
+            this.dateTimePickerDueDate.Location = new System.Drawing.Point(980, 27);
+            this.dateTimePickerDueDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
-            this.dateTimePickerDueDate.Size = new System.Drawing.Size(295, 34);
+            this.dateTimePickerDueDate.Size = new System.Drawing.Size(259, 29);
             this.dateTimePickerDueDate.TabIndex = 7;
             // 
             // TaskAssignPopUp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1515, 264);
+            this.ClientSize = new System.Drawing.Size(1326, 198);
             this.Controls.Add(this.dateTimePickerDueDate);
             this.Controls.Add(this.buttonAssign);
             this.Controls.Add(this.label3);
@@ -121,7 +125,9 @@ namespace LoginApp
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtTask);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TaskAssignPopUp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TaskAssignScreen";
             this.Load += new System.EventHandler(this.TaskAssignScreen_Load);
             this.ResumeLayout(false);

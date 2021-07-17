@@ -43,13 +43,14 @@ namespace LoginApp.Tasks
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTaskList.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dgvTaskList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTaskList.Location = new System.Drawing.Point(12, 12);
+            this.dgvTaskList.Location = new System.Drawing.Point(10, 9);
+            this.dgvTaskList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvTaskList.Name = "dgvTaskList";
             this.dgvTaskList.ReadOnly = true;
             this.dgvTaskList.RowHeadersWidth = 51;
             this.dgvTaskList.RowTemplate.Height = 29;
             this.dgvTaskList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTaskList.Size = new System.Drawing.Size(1170, 383);
+            this.dgvTaskList.Size = new System.Drawing.Size(1024, 287);
             this.dgvTaskList.TabIndex = 0;
             // 
             // buttonDeleteTask
@@ -57,9 +58,10 @@ namespace LoginApp.Tasks
             this.buttonDeleteTask.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonDeleteTask.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonDeleteTask.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonDeleteTask.Location = new System.Drawing.Point(950, 432);
+            this.buttonDeleteTask.Location = new System.Drawing.Point(831, 318);
+            this.buttonDeleteTask.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDeleteTask.Name = "buttonDeleteTask";
-            this.buttonDeleteTask.Size = new System.Drawing.Size(232, 60);
+            this.buttonDeleteTask.Size = new System.Drawing.Size(203, 49);
             this.buttonDeleteTask.TabIndex = 1;
             this.buttonDeleteTask.Text = "Delete";
             this.buttonDeleteTask.UseVisualStyleBackColor = true;
@@ -67,11 +69,12 @@ namespace LoginApp.Tasks
             // 
             // TaskViewPopUp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1194, 504);
+            this.ClientSize = new System.Drawing.Size(1045, 378);
             this.Controls.Add(this.buttonDeleteTask);
             this.Controls.Add(this.dgvTaskList);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TaskViewPopUp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TaskViewPopUp";

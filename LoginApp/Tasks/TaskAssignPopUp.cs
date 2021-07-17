@@ -12,7 +12,7 @@ namespace LoginApp
 {
     public partial class TaskAssignPopUp : Form
     {
-
+        
         public static string task;
         public static string role;
         public static DateTime dueDate;
@@ -50,8 +50,7 @@ namespace LoginApp
 
         private void buttonAssign_Click(object sender, EventArgs e)
         {
-            var confirmResult = Confirmation.Confirm();
-            if (confirmResult == DialogResult.Yes)
+            if (Confirmation.Confirm() == DialogResult.Yes)
             {
                 Assign();
             }
@@ -65,7 +64,8 @@ namespace LoginApp
             {
                 using (SqlConnection connection2 = new SqlConnection(ConnectionStrings.conStr))
                 {
-                    SqlCommand sqlCommand = new SqlCommand("insert into Tasks values(@Task, @Role, @DueDate)", connection2);
+                    //SqlCommand sqlCommand = new SqlCommand("insert into Tasks values(@Task, @Role, @DueDate)", connection2);
+                    SqlCommand sqlCommand;
                     connection2.Open();
                     if (txtTask.Text == string.Empty || !dateTimePickerDueDate.Checked || checkedListBoxRoles.CheckedItems.Count == 0)
                     {
@@ -76,25 +76,27 @@ namespace LoginApp
                         // for loop checkedListBox Roles
                         for (int i = 0; i < checkedListBoxRoles.CheckedItems.Count; i++)
                         {
-                            //sqlCommand = new SqlCommand("insert into Tasks values(@Task, @Role, @DueDate)", connection);
+                            sqlCommand = new SqlCommand("insert into Tasks values(@Task, @Role, @DueDate)", connection2);
                             sqlCommand.Parameters.AddWithValue("Task", txtTask.Text);
                             sqlCommand.Parameters.AddWithValue("Role", checkedListBoxRoles.CheckedItems[i].ToString());
                             sqlCommand.Parameters.AddWithValue("DueDate", dateTimePickerDueDate.Value.ToString("yyyy/MM/dd"));
 
                             //dateTimePickerDueDate.Value.ToString("yyyy-MM-dd hh:mm:ss.fff");
                             //dateTimePickerDueDate.Value.Date.ToString("yyyy-MM-dd")
-
+                            
                             try
                             {
                                 sqlCommand.ExecuteNonQuery();
                             }
                             catch (SqlException e)
                             {
-                                MessageBox.Show("An error occurred while processing your request. Contact your system administrator.",
-                                    "Error Code: " + Convert.ToString(e.ErrorCode), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(e.Message);
+                                //MessageBox.Show("An error occurred while processing your request. Contact your system administrator.",
+                                //    "Error Code: " + Convert.ToString(e.ErrorCode), MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 sqlCommand.Dispose();
                                 return;
                             }
+                            
                         }
                         MessageBox.Show("Task assigned!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
