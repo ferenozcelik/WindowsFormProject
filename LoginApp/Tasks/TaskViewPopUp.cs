@@ -27,8 +27,9 @@ namespace LoginApp.Tasks
                 buttonUpdateTask.Visible = false;
                 dgvTaskList.ReadOnly = true;
             }
-            
+
             DisplayTasks();
+            
         }
 
 
@@ -46,17 +47,18 @@ namespace LoginApp.Tasks
                     // admin control
                     if (LoginScreen.admin == true) 
                     {
-                        sqlDa = new SqlDataAdapter("Select Id as ID, Task, Role, DueDate as [Due Date] from Tasks order by ID", connection);
+                        sqlDa = new SqlDataAdapter("Select ID, Task, Role, DueDate as [Due Date] from Tasks order by ID", connection);
                     }
                     if (LoginScreen.admin == false)
                     {
-                        sqlDa = new SqlDataAdapter("Select Task, Role, DueDate as [Due Date] from Tasks where Role = '" + LoginScreen.role + "'", connection);
+                        sqlDa = new SqlDataAdapter("Select ID, Task, Role, DueDate as [Due Date] from Tasks where Role = '" + LoginScreen.role + "'", connection);
                     }
 
                     try
                     {
                         sqlDa.Fill(dataTable);
                         dgvTaskList.DataSource = dataTable;
+                        
                     }
                     catch (SqlException e)
                     {
@@ -72,6 +74,9 @@ namespace LoginApp.Tasks
                     "Error code: " + e.ErrorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 taskListState = false;
             }
+
+            dgvTaskList.Columns["ID"].ReadOnly = true;
+            dgvTaskList.Columns["Role"].ReadOnly = true;
         }
 
 
