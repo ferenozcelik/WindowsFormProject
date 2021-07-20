@@ -18,6 +18,8 @@ namespace LoginApp
         public static DateTime dueDate;
 
         static SqlConnection connection = new SqlConnection(ConnectionStrings.conStrMars);
+        SqlCommand sqlCommand;
+
         public TaskAssignPopUp()
         {
             InitializeComponent();
@@ -65,7 +67,6 @@ namespace LoginApp
                 using (SqlConnection connection2 = new SqlConnection(ConnectionStrings.conStr))
                 {
                     //SqlCommand sqlCommand = new SqlCommand("insert into Tasks values(@Task, @Role, @DueDate)", connection2);
-                    SqlCommand sqlCommand;
                     connection2.Open();
                     if (txtTask.Text == string.Empty || !dateTimePickerDueDate.Checked || checkedListBoxRoles.CheckedItems.Count == 0)
                     {
@@ -73,6 +74,7 @@ namespace LoginApp
                     }
                     else
                     {
+
                         // for loop checkedListBox Roles
                         for (int i = 0; i < checkedListBoxRoles.CheckedItems.Count; i++)
                         {
@@ -96,9 +98,9 @@ namespace LoginApp
                                 sqlCommand.Dispose();
                                 return;
                             }
-                            
                         }
-                        MessageBox.Show("Task assigned!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Task assigned.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        sqlCommand.Dispose();
                     }
                 }
             }
