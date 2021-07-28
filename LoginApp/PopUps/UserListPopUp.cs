@@ -27,7 +27,7 @@ namespace LoginApp
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionStrings.conStr))
                 {
-                    // COMMAND'I DATAADAPTER'A VEREMİYORUM
+                    
                     sqlCommand = new SqlCommand("Select UserID as ID, FirstName as [First Name], LastName as [Last Name], Country, City, Role from Users", connection);
 
                     connection.Open(); // bağlanamazsa açmıyor. kapalı kalıyor
